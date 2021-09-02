@@ -1,4 +1,4 @@
-# Loot NFT Sales Bot
+# Sk8Loot NFT Sales Bot
 
 This bot sends sales data to [@lootproject](https://twitter.com/lootproject)'s [Discord server](https://t.co/GjVFrtNPnU?amp=1).
 
