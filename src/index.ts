@@ -27,27 +27,23 @@ async function main() {
     async (from: string, to: string, tokenIdBN: BigNumber, event: Event) => {
       const { value } = await event.getTransaction()
 
-      // make sure it was a sale and not just a transfer
-      // by checking if value is greater than 0
-      if (value.gt(0)) {
-        const tokenId = tokenIdBN.toString()
-        const loot: Loot = lootList[tokenId]
+      const tokenId = tokenIdBN.toString()
+      const loot: Loot = lootList[tokenId]
 
-        // get prices
-        const eth = utils.formatEther(value)
-        const usd = await getEthUsd(parseFloat(eth))
+      // get prices
+      const eth = utils.formatEther(value)
+      const usd = await getEthUsd(parseFloat(eth))
 
-        const message: Message = {
-          from,
-          to,
-          tokenId,
-          eth,
-          usd,
-          loot,
-        }
-        console.log('Sale: ', message)
-        sendDiscordMessage(message)
+      const message: Message = {
+        from,
+        to,
+        tokenId,
+        eth,
+        usd,
+        loot,
       }
+      console.log('Sale: ', message)
+      sendDiscordMessage(message)
     },
   )
 }
